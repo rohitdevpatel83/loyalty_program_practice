@@ -1,11 +1,11 @@
-<h1>Generate Spending</h1>
-
 <br/>
 <fieldset>
+  <legend>Generate Spending</legend>
   <%= form_with model: @spending, url: spendings_path do |f| %>
     <div class="field">
       <b><%= f.label :amount %><br /></b>
       <%= f.number_field :amount, step: :any %>
+      
     </div>
 
     <div class="actions">
