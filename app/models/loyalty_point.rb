@@ -6,8 +6,6 @@ class LoyaltyPoint < ApplicationRecord
 
   enum reward_title: [:standard, :free_coffee, :rebate, :movie_ticket, :airport_lounge_access]
 
-  scope :valid, -> { where("created_at > ?", 1.year.ago) }
-
   def update_expiry
     self.expiry = DateTime.now + 1.year
   end

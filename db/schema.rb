@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_26_105217) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_27_030338) do
   create_table "loyalty_points", force: :cascade do |t|
     t.float "points"
     t.integer "spending_id", null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_105217) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "dob"
+    t.datetime "gold_tier_time"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

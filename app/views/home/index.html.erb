@@ -5,7 +5,11 @@
     <div class="field">
       <b><%= f.label :amount %><br /></b>
       <%= f.number_field :amount, step: :any %>
-      
+    </div>
+
+    <div class="field">
+        <%= f.check_box :foreign_spending %>
+        <%= f.label :foreign_spending %>
     </div>
 
     <div class="actions">
@@ -13,3 +17,5 @@
     </div>
   <% end %>
 </fieldset>
+
+<p> Total Rewards earned: <b><%= current_user.total_rewards_earned %></b></p>
