@@ -18,4 +18,16 @@
   <% end %>
 </fieldset>
 
-<p> Total Rewards earned: <b><%= current_user.total_rewards_earned %></b></p>
+<p> Total Loyalty Points Earned: <b><%= current_user.total_rewards_earned %></b></p>
+
+
+<table>
+  <tr>
+    <th>Reward</th>
+    <th>Expiry</th>
+  </tr>
+
+  <% @loyalty_points.each do |point| %>
+    <%= render 'loyalty_point', point: point %>
+  <% end %>
+</table>
