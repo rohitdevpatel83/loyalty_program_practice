@@ -14,7 +14,24 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+    <%if user_signed_in?%>
+      <%= button_to "logout", destroy_user_session_path, method: :delete  %>
+      <br/>
+      <fieldset>
+        <legend>Update Country</legend>
+        <%= form_for(current_user, as: :user, url: registration_path(:user)) do |f| %>
+          <div class="field">
+            <%= f.label :country %><br />
+            <%= f.select :country, options_for_select(User.countries, selected: current_user.country), autofocus: true %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Submit" %>
+          </div>
+        <%end%>
+      </fieldset>
+    <%end%>
+
     <%= yield %>
   </body>
 </html>

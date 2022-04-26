@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_22_120753) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_26_072517) do
+  create_table "loyalty_points", force: :cascade do |t|
+    t.float "points"
+    t.integer "spending_id", null: false
+    t.datetime "expiry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spending_id"], name: "index_loyalty_points_on_spending_id"
+  end
+
+  create_table "spendings", force: :cascade do |t|
+    t.float "amount"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_spendings_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -19,8 +36,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_22_120753) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "dob"
+    t.string "country"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "loyalty_points", "spendings"
+  add_foreign_key "spendings", "users"
 end

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  points: 1.5
+  spending: one
+  expiry: 2022-04-26 12:54:40
+
+two:
+  points: 1.5
+  spending: two
+  expiry: 2022-04-26 12:54:40
